@@ -20,11 +20,11 @@ namespace :users do
 
 
           after = user.last_stat
-          if user.stats.size >= 2 && !before.nil?
-            report = MessageFormatter.compare_stats(before,after)
 
-            # options = {user_id: user.id, bot: bot, report: report}
-            # MessageResponder.new(options).stat_report(options)
+          if user.stats.size >= 2 && !before.nil?
+            report = Stat.compare_stats(before,after)
+            msg = MessageFormatter.new(report).report_stat
+            BotCommand::Report.new(user,msg).report
           end
         end
       end
