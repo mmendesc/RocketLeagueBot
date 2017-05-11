@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511005450) do
+ActiveRecord::Schema.define(version: 20170511183841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170511005450) do
     t.integer "version"
     t.integer "user_id"
     t.boolean "played"
+    t.string  "player_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170511005450) do
     t.boolean  "report",      default: true
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.boolean  "found"
     t.index ["telegram_id", "chat_id"], name: "index_users_on_telegram_id_and_chat_id", unique: true, using: :btree
   end
 

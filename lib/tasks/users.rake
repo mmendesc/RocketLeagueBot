@@ -1,3 +1,6 @@
+require './lib/scraper_api/scraper'
+require './lib/scraper_api/parser'
+
 namespace :users do
 
   desc 'update status of all users'

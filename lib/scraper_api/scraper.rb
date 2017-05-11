@@ -51,10 +51,15 @@ module ScraperApi
         parser = get_page
         if parser != 'Invalid name'
           if parser.found_user?
+            @user.found = true
+            @user.save
             stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
             stats.each do |stat|
               @stats[stat] = get_stat(stat,parser)
             end
+          else
+            @user.found = false
+            @user.save
           end
         end
         @stats
