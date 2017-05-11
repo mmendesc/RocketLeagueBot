@@ -124,18 +124,6 @@ Playlist: #{info['Playlist']}
 
   end
 
-  def self.integer(div)
-    stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
-    stats.each do |stat|
-      if stats != 'goal_ratio'
-        div[stat] = div[stat].delete(',')
-      else
-        div[stat] = div[stat].to_d
-      end
-    end
-    div
-  end
-
   def self.compare_stats(before,after)
     stats = Hash.new
     fields = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
@@ -154,4 +142,27 @@ Playlist: #{info['Playlist']}
     count == 7
   end
 
+end
+
+class Hash
+  def to_stats
+    stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
+    stats.each do |stat|
+      if stats != 'goal_ratio'
+        self[stat] = self[stat].delete(',')
+      else
+        self[stat] = self[stat].to_d
+      end
+    end
+    self
+  end
+
+  def compare_stats(before,after)
+    stats = Hash.new
+    fields = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
+    fields.each do |field|
+      stats[field] = after[field] - before[field]
+    end
+    stats
+  end
 end

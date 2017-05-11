@@ -4,7 +4,7 @@ module BotCommand
   class Base
     attr_reader :user, :message, :api
 
-    def initialize(user, message)
+    def initialize(user, message = nil)
       @user = user
       @message = message
       token = Rails.application.secrets.bot_token

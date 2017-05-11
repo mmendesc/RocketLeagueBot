@@ -1,8 +1,5 @@
 module BotCommand
   class Start < Base
-    def should_start?
-      text =~ /\A\/start/
-    end
 
     def start
       msg = MessageFormatter.instructions

@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'telegram-bot-ruby'
 gem 'pry'
+gem 'httparty'
+gem 'nokogiri'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
