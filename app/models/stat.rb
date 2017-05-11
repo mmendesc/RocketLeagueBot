@@ -16,4 +16,13 @@ class Stat < ApplicationRecord
             shots: stats['shots'],assists: stats['assists'],mvps: stats['mvps'], version: user.next_version,played: true)
   end
 
+  def self.compare_stats(before,after)
+    stats = Hash.new
+    fields = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
+    fields.each do |field|
+      stats[field] = after[field] - before[field]
+    end
+    stats
+  end
+
 end
