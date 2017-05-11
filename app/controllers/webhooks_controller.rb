@@ -2,6 +2,7 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def callback
+    #binding.pry
     dispatcher.new(webhook, user).process
     head :ok
   end
@@ -15,11 +16,11 @@ class WebhooksController < ApplicationController
   end
 
   def from
-    webhook[:message][:from]
+    webhook[:from]
   end
 
   def chat
-    webhook[:message][:chat]
+    webhook[:chat]
   end
 
   def user

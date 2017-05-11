@@ -1,4 +1,6 @@
 # server-based syntax
+set :puma_env, :production
+set :rack_env, :production
 server '54.202.231.125', user: 'deploy', roles: %w{web app db}
 
 
