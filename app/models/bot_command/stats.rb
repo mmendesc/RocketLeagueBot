@@ -1,3 +1,6 @@
+require './lib/scraper_api'
+require './lib/scraper_api/scraper'
+require './lib/scraper_api/parser'
 module BotCommand
   class Stats < Base
 
