@@ -2,7 +2,7 @@ class BotMessageDispatcher
   attr_reader :message, :user
 
   def initialize(message, user)
-    @message = message[:text]
+    @message = message[:message][:text]
     @user = user
 
   end
