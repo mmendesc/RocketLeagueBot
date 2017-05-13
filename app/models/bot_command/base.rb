@@ -7,7 +7,7 @@ module BotCommand
     def initialize(user, message = nil)
       @user = user
       @message = message
-      token = Rails.application.secrets.bot_token
+      token = Figaro.env.bot_token
       @api = ::Telegram::Bot::Api.new(token)
     end
 
