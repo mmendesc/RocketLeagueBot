@@ -2,9 +2,9 @@ require './lib/scraper_api'
 require './lib/scraper_api/scraper'
 require './lib/scraper_api/parser'
 module BotCommand
-  class Divisions < Base
+  class Rank < Base
 
-    def divisions
+    def rank
       msg = ScraperApi::Scraper.new(@user).divisions
       msg = MessageFormatter.new(msg).ranks
       send_message msg

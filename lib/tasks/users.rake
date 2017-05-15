@@ -9,7 +9,7 @@ namespace :users do
     @users.each do |user|
       if user.found? && user.report
         BotCommand::Stats.new(user).stats
-        BotCommand::Divisions.new(user).divisions
+        BotCommand::Rank.new(user).rank
 
         before= user.last_stat
         stats = ScraperApi::Scraper.new(user).stats

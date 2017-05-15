@@ -27,8 +27,8 @@ class BotMessageDispatcher
       BotCommand::User.new(user).user
     when /^\/stats/
       BotCommand::Stats.new(user).stats
-    when /^\/divisions/
-      BotCommand::Divisions.new(user).divisions
+    when /^\/rank/
+      BotCommand::Rank.new(user).rank
     else
       unknown_command
     end
