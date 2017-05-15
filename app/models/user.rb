@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :stats
+  has_many :ranks
   validates_uniqueness_of :telegram_id
 
   def set_next_bot_command(command)
