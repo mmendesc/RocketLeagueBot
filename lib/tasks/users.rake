@@ -7,12 +7,10 @@ namespace :users do
   task :update => :environment do
     @users = User.all
     @users.each do |user|
-      if !user.chat_id.blank? && user.report
+      if user.found? && user.report
         BotCommand::Stats.new(user).stats
         BotCommand::Divisions.new(user).divisions
-      end
 
-      if user.valid_for_search?
         before= user.last_stat
         stats = ScraperApi::Scraper.new(user).stats
 

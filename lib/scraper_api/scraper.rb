@@ -50,7 +50,7 @@ module ScraperApi
       if @user.valid_for_search?
         parser = get_page
         if parser != 'Invalid name'
-          if parser.found_user?
+          if @user.found? || parser.found_user?
             @user.found = true
             @user.save
             stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
@@ -61,6 +61,9 @@ module ScraperApi
             @user.found = false
             @user.save
           end
+        else
+          @user.found = false
+          @user.save
         end
         @stats
       end
@@ -93,8 +96,10 @@ module ScraperApi
 
     def divisions
       parser = get_page
-      if parser.found_user?
-        divisions = parser.get_division
+      if parser != 'Invalid name'
+        if @user.found? || parser.found_user?
+          divisions = parser.get_division
+        end
       end
     end
 

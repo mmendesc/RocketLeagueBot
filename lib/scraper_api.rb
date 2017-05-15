@@ -2,7 +2,6 @@
 require 'httparty'
 require 'nokogiri'
 require './lib/scraper_api/scraper'
-require './lib/scraper_api/user'
 require './lib/scraper_api/parser'
 
 module ScraperApi

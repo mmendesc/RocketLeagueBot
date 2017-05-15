@@ -43,4 +43,8 @@ class User < ApplicationRecord
     self.save
   end
 
+  def found?
+    found
+  end
+
 end
