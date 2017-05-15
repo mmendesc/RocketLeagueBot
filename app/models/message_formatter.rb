@@ -24,7 +24,7 @@ class MessageFormatter
 
     <b>Stats </b>
       /stats        - Send your statistics
-      /divisions    - Send your ranked statistics
+      /rank    - Send your ranked statistics
 
     <pre>---------------------------------------------------</pre>
     <i> Created by Mmendesc </i>
@@ -51,7 +51,7 @@ class MessageFormatter
 
     <b>Stats </b>
       /stats        - Send your statistics
-      /divisions    - Send your ranked statistics
+      /rank    - Send your ranked statistics
 
     <pre>---------------------------------------------------</pre>
     <i> Created by Mmendesc </i>
