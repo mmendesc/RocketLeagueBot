@@ -145,10 +145,11 @@ Playlist: #{info['Playlist']}
   def report_rank
     msg = 'Report of your progression from yesterday:'
     @info.each do |info|
-      if info['games'] == 0 && false
-        msg = "You didn't played yesterday."
+      if info['games'] == 0
+        msg = ""
       else
         resume = info['improved'] ? ['positive','+'] : ['negative','-']
+
         msg = msg+
           "
 Playlist: #{info['playlist']}

@@ -11,8 +11,8 @@ namespace :users do
       if user.found? && user.report
         BotCommand::Report.new(user,'This is your daily report.(still in beta)').report
         BotCommand::Report.new(user,'To turn off daily updates, send /update').report
-        BotCommand::Stats.new(user).stats
-        BotCommand::Rank.new(user).rank
+        #BotCommand::Stats.new(user).stats
+        #BotCommand::Rank.new(user).rank
 
 
         before = user.last_stat
