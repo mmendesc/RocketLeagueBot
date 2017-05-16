@@ -47,7 +47,7 @@ namespace :users do
   task :save_rank => :environment do
     @users = User.all
     @users.each do |user|
-      if user.found? && user.report
+      if user.found?
         before_r = user.last_rank
         ranks = ScraperApi::Scraper.new(user).divisions
         user.add_rank(ranks)
