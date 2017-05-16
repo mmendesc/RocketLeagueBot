@@ -142,6 +142,29 @@ Playlist: #{info['Playlist']}
     count == 7
   end
 
+  def report_rank
+    msg = 'Report of your progression from yesterday:'
+    @info.each do |info|
+      if info['games'] == 0 && false
+        msg = "You didn't played yesterday."
+      else
+        resume = info['improved'] ? ['positive','+'] : ['negative','-']
+        msg = msg+
+          "
+Playlist: #{info['playlist']}
+  You had an #{resume[0]} result with a #{resume[1]}#{info['rating']} rating
+  From: #{info['from']}
+  To: #{info['to']}
+  Games: #{info['games']}
+
+            "
+
+
+      end
+    end
+    msg
+  end
+
 end
 
 class Hash
@@ -149,7 +172,7 @@ class Hash
     stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
     stats.each do |stat|
       if stats != 'goal_ratio'
-        self[stat] = self[stat].delete(',')
+        self[stat] = self[stat]
       else
         self[stat] = self[stat].to_d
       end

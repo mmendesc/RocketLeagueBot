@@ -44,6 +44,18 @@ class User < ApplicationRecord
     self.save
   end
 
+  def add_rank(ranks)
+    Rank.create_from_hash(self,ranks)
+  end
+
+  def last_rank
+    self.rank(self.last_version)
+  end
+
+  def rank(version)
+    self.ranks.where(version: version)
+  end
+
   def found?
     found
   end

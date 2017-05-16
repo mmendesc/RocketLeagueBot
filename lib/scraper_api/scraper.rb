@@ -77,7 +77,6 @@ module ScraperApi
 
     def get_page
       puts full_uri
-
       begin
         uri = URI.parse(full_uri)
         response = HTTParty.get(full_uri)
@@ -98,6 +97,7 @@ module ScraperApi
       parser = get_page
       if parser != 'Invalid name'
         if @user.found? || parser.found_user?
+
           divisions = parser.get_division
         end
       end

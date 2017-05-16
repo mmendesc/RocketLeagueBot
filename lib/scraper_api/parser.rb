@@ -63,7 +63,9 @@ module ScraperApi
           end
           divs[information[i]] = td.text.strip.split(/[\r\n]+/).first
         end
-        divisions << divs
+        unless divs['Rank'] == 'Unranked'
+          divisions << divs
+        end
       end
       divisions
     end
