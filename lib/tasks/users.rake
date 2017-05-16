@@ -28,7 +28,6 @@ namespace :users do
           after = user.last_stat
           after_r = user.last_rank
           if user.stats.size >= 2 && !before.nil?
-
             report = Stat.compare_stats(before,after)
             msg = MessageFormatter.new(report).report_stat
             BotCommand::Report.new(user,msg).report

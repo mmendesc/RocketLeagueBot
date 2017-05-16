@@ -146,7 +146,7 @@ Playlist: #{info['Playlist']}
     msg = 'Report of your progression from yesterday:'
     @info.each do |info|
       if info['games'] == 0
-        msg = ""
+        msg += ""
       else
         resume = info['improved'] ? ['positive','+'] : ['negative','-']
 
@@ -163,7 +163,7 @@ Playlist: #{info['playlist']}
 
       end
     end
-    msg
+    msg = (msg == 'Report of your progression from yesterday:') ? '' : msg
   end
 
 end

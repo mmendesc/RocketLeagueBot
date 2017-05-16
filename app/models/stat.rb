@@ -12,8 +12,8 @@ class Stat < ApplicationRecord
   end
 
   def self.create_from_hash(user,stats)
-    Stat.new(wins: stats['wins'],goals: stats['goals'],goal_ratio: stats['goal_ratio'],saves: stats['saves'],
-            shots: stats['shots'],assists: stats['assists'],mvps: stats['mvps'], version: user.next_version,played: true,player_id: user.player_id)
+    Stat.new(wins: stats['wins'].delete(','),goals: stats['goals'].delete(','),goal_ratio: stats['goal_ratio'],saves: stats['saves'].delete(','),
+            shots: stats['shots'].delete(','),assists: stats['assists'].delete(','),mvps: stats['mvps'].delete(','), version: user.next_version,played: true,player_id: user.player_id)
   end
 
   def self.compare_stats(before,after)
