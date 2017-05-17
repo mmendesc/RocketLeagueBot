@@ -9,7 +9,7 @@ class MessageFormatter
     "<b>Welcome to Rocket League Stats Bot </b>
     Data extracted from: <a href='https://rocketleague.tracker.network'>Rocket League Tracker</a>
     <pre>---------------------------------------------------</pre>
-    <b>instructions:</b>
+    <b>Instructions:</b>
     First set your user with /nickname
     Example: /nickname yournamegoeshere
     Second set the platform you play , options [steam,ps,xbox]
@@ -36,16 +36,17 @@ class MessageFormatter
   def self.help
     msg=
     "
-    <b>instructions:</b>
+    <b>Instructions:</b>
     First set your user with /nickname
     Example: /nickname yournamegoeshere
     Second set the platform you play , options [steam,ps,xbox]
     Example: /platform steam
+    <b>OBS: Daily updates are on by default, send /update to turn off</b>
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
       /nickname xxx - Set your user nickname or id
       /platform xxx - Set your platform
-      /update       - Set on/off daily stastics
+      /update       - Set on/off daily stastics <b>OBS: Daily updates are on by default</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered
 
