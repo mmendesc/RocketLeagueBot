@@ -148,7 +148,7 @@ Playlist: #{info['Playlist']}
       if info['games'] == 0
         msg += ""
       else
-        resume = info['improved'] ? ['positive','+'] : ['negative','-']
+        resume = info['improved'] ? ['positive','+'] : ['negative','']
 
         msg = msg+
           "
