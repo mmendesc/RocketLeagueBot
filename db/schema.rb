@@ -10,37 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515005045) do
+ActiveRecord::Schema.define(version: 20170525150816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "ranks", force: :cascade do |t|
-    t.string  "playlist"
-    t.string  "rank"
-    t.string  "division"
-    t.integer "rating"
-    t.string  "division_up"
-    t.string  "division_down"
-    t.integer "games"
-    t.integer "user_id"
-    t.integer "version"
-    t.boolean "played"
-    t.string  "player_id"
+    t.string   "playlist"
+    t.string   "rank"
+    t.string   "division"
+    t.integer  "rating"
+    t.string   "division_up"
+    t.string   "division_down"
+    t.integer  "games"
+    t.integer  "user_id"
+    t.integer  "version"
+    t.boolean  "played"
+    t.string   "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stats", force: :cascade do |t|
-    t.integer "wins"
-    t.integer "goals"
-    t.decimal "goal_ratio"
-    t.integer "saves"
-    t.integer "shots"
-    t.integer "assists"
-    t.integer "mvps"
-    t.integer "version"
-    t.integer "user_id"
-    t.boolean "played"
-    t.string  "player_id"
+    t.integer  "wins"
+    t.integer  "goals"
+    t.decimal  "goal_ratio"
+    t.integer  "saves"
+    t.integer  "shots"
+    t.integer  "assists"
+    t.integer  "mvps"
+    t.integer  "version"
+    t.integer  "user_id"
+    t.boolean  "played"
+    t.string   "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
