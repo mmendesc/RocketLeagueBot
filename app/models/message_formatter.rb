@@ -84,6 +84,9 @@ MVPs: #{@info['mvps']}
     else
       msg =
     "
+This is your daily report.(still in beta)
+To turn off daily updates, send /update
+
 Report of your progression from yesterday:
 Wins: #{@info['wins']}
 Goals: #{@info['goals']}
