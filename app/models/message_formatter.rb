@@ -80,7 +80,7 @@ MVPs: #{@info['mvps']}
 
   def report_stat
     if self.not_played?
-      msg = "You didn't played yesterday."
+      msg = "You didn't play yesterday."
     else
       msg =
     "
