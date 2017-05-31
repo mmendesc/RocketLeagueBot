@@ -18,7 +18,7 @@ class MessageFormatter
     <b>Settings</b>
       /nickname xxx - Set your user nickname or id
       /platform xxx - Set your platform
-      /update       - Set on/off daily stastics
+      /update       - Set on/off daily stastics <b>default is on</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered
 
@@ -41,12 +41,11 @@ class MessageFormatter
     Example: /nickname yournamegoeshere
     Second set the platform you play , options [steam,ps,xbox]
     Example: /platform steam
-    <b>OBS: Daily updates are on by default, send /update to turn off</b>
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
       /nickname xxx - Set your user nickname or id
       /platform xxx - Set your platform
-      /update       - Set on/off daily stastics <b>OBS: Daily updates are on by default</b>
+      /update       - Set on/off daily stastics <b>default is on</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered
 
