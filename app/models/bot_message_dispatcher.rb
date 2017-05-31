@@ -19,8 +19,8 @@ class BotMessageDispatcher
       BotCommand::Help.new(user).help
     when /^\/update/
       BotCommand::Update.new(user).update
-    when /^\/nickname/
-      BotCommand::Nickname.new(user,message).nickname
+    when /^\/username/
+      BotCommand::Username.new(user,message).username
     when /^\/platform/
       BotCommand::Platform.new(user,message).platform
     when /^\/user/

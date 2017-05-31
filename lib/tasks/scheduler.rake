@@ -33,7 +33,7 @@ desc 'update status of all users'
 
             report = Rank.compare_rank(before_r,after_r)
             msg = MessageFormatter.new(report).report_rank
-            BotCommand::Report.new(user,msg).report
+            BotCommand::Report.new(user,msg).report_html
           end
         end
       end

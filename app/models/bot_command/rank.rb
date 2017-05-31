@@ -7,7 +7,7 @@ module BotCommand
     def rank
       msg = ScraperApi::Scraper.new(@user).divisions
       msg = MessageFormatter.new(msg).ranks
-      send_message msg
+      send_html_message msg
     end
 
   end

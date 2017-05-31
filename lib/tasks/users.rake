@@ -30,11 +30,11 @@ namespace :users do
           if user.stats.size >= 2 && !before.nil?
             report = Stat.compare_stats(before,after)
             msg = MessageFormatter.new(report).report_stat
-            #BotCommand::Report.new(user,msg).report
+            BotCommand::Report.new(user,msg).report
 
             report = Rank.compare_rank(before_r,after_r)
             msg = MessageFormatter.new(report).report_rank
-            #BotCommand::Report.new(user,msg).report
+            BotCommand::Report.new(user,msg).report_html
           end
         end
       end

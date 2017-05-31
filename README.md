@@ -10,14 +10,14 @@ On telegram search for the user **@rocket_telegram_bot** or click [this link](ht
 Click on the `/start` button.
 
 #### Setting up your player name and plaftorm
-To set your name send `/nickname xxx`
+To set your name send `/username xxx`
 *obs: some players in steam have duplicated names/hard to search, so you can also send your steam id*
 
-    /nickname myname
+    /username myname
 
 or
 
-    /nickname yoursteamid
+    /username yoursteamid
 To set your plataform send `/platform xxx`, there are 3 platforms available: steam,xbox and ps
 
     /platform steam
@@ -66,9 +66,9 @@ Send `/rank` to get ranked statistics
   Games: 59*
 
 ###### Registed User
-Send `/user` to check which nickname and platform you registered.
+Send `/user` to check which username and platform you registered.
 **Response:**
-*yournickname,platform*
+*yourusername,platform*
 
 
 

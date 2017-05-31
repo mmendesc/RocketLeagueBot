@@ -10,15 +10,15 @@ class MessageFormatter
     Data extracted from: <a href='https://rocketleague.tracker.network'>Rocket League Tracker</a>
     <pre>---------------------------------------------------</pre>
     <b>Instructions:</b>
-    First set your user with /nickname
-    Example: /nickname yournamegoeshere
+    First set your user with /username
+    Example: /username yournamegoeshere
     Second set the platform you play , options [steam,ps,xbox]
     Example: /platform steam
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
-      /nickname xxx - Set your user nickname or id
+      /username xxx - Set your user username or id
       /platform xxx - Set your platform
-      /update       - Set on/off daily stastics <b>default is on</b>
+      /update       - Set on/off daily stastics <b>default: on</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered
 
@@ -37,15 +37,15 @@ class MessageFormatter
     msg=
     "
     <b>Instructions:</b>
-    First set your user with /nickname
-    Example: /nickname yournamegoeshere
+    First set your user with /username
+    Example: /username yournamegoeshere
     Second set the platform you play , options [steam,ps,xbox]
     Example: /platform steam
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
-      /nickname xxx - Set your user nickname or id
+      /username xxx - Set your user username or id
       /platform xxx - Set your platform
-      /update       - Set on/off daily stastics <b>default is on</b>
+      /update       - Set on/off daily stastics <b>default: on</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered
 
@@ -155,8 +155,9 @@ Playlist: #{info['Playlist']}
 
         msg = msg+
           "
-Playlist: #{info['playlist']}
-  You had an #{resume[0]} result with a #{resume[1]}#{info['rating']} rating
+Playlist: <b>#{info['playlist']}</b>
+  You had an #{resume[0]} result
+  Rating: <b>#{resume[1]}#{info['rating']} </b>
   From: #{info['from']}
   To: #{info['to']}
   Games: #{info['games']}
