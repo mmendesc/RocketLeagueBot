@@ -9,7 +9,7 @@ module BotCommand
       elsif @user.platform && @user.player_id.blank?
         msg = "Platform: #{@user.platform}, Username: need to set, send /username your username"
       else
-        msg = "You need to set your Username and Platform, send /help for instructions"
+        msg = "You need to set your Username and Platform, send /help for instructions."
       end
       send_message(msg)
       @user.reset_next_bot_command

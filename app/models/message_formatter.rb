@@ -79,14 +79,14 @@ MVPs: #{@info['mvps']}
 
   def report_stat
     if self.not_played?
-      msg = "You didn't play yesterday."
+      msg = "You didn't play in the last 24 hours."
     else
       msg =
     "
 This is your daily report.(still in beta)
 To turn off daily updates, send /update
 
-Report of your progression from yesterday:
+Report of your progression from last 24 hours:
 Wins: #{@info['wins']}
 Goals: #{@info['goals']}
 Goal/Shot ratio: #{@info['goal_ratio']}
@@ -145,17 +145,24 @@ Playlist: #{info['Playlist']}
   end
 
   def report_rank
-    msg = 'Report of your progression from yesterday:'
+    msg = 'Report of your progression from last 24 hours:'
     @info.each do |info|
       if info['games'] == 0
         msg += ""
       else
-        resume = info['improved'] ? ['positive','+'] : ['negative','']
+        if info['rating'] > 0
+          resume = ['positive','+']
+        elsif info['rating'] < 0
+          resume = ['negative','']
+        else
+          resume = ['neutral','']
+        end
+
 
         msg = msg+
           "
 Playlist: <b>#{info['playlist']}</b>
-  You had an #{resume[0]} result
+  You had a #{resume[0]} result
   Rating: <b>#{resume[1]}#{info['rating']} </b>
   From: #{info['from']}
   To: #{info['to']}
@@ -166,7 +173,7 @@ Playlist: <b>#{info['playlist']}</b>
 
       end
     end
-    msg = (msg == 'Report of your progression from yesterday:') ? '' : msg
+    msg = (msg == 'Report of your progression from last 24 hours:') ? '' : msg
   end
 
 end

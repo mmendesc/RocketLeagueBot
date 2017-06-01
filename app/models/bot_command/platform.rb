@@ -27,7 +27,7 @@ module BotCommand
         @user.save
         msg = 'Platform registered.'
       else
-        msg = "Platform name invalid , options are: steam,ps,xbox"
+        msg = "Platform name invalid , options are: steam,ps,xbox."
       end
       send_message(msg)
     end

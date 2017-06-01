@@ -31,7 +31,6 @@ class Rank < ApplicationRecord
         rank['games'] = a_rank['games'] - b_rank['games']
         rank['from'] = b_rank['rank'] + ' ' + b_rank['division']
         rank['to'] = a_rank['rank'] + ' ' + a_rank['division']
-        rank['improved'] = (a_rank['rating'] - b_rank['rating']) > 0 ? true : false
 
         ranks << rank
       end
