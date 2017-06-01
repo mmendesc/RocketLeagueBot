@@ -12,25 +12,29 @@ class BotMessageDispatcher
   end
 
   def respond
-    case @message
-    when /^\/start/
-      BotCommand::Start.new(user).start
-    when /^\/help/
-      BotCommand::Help.new(user).help
-    when /^\/update/
-      BotCommand::Update.new(user).update
-    when /^\/username/
-      BotCommand::Username.new(user,message).username
-    when /^\/platform/
-      BotCommand::Platform.new(user,message).platform
-    when /^\/user/
-      BotCommand::User.new(user).user
-    when /^\/stats/
-      BotCommand::Stats.new(user).stats
-    when /^\/rank/
-      BotCommand::Rank.new(user).rank
+    if !@user.bot_command.blank? && @message.first != '/'
+      @user.get_next_bot_command.safe_constantize.new(user,message).send(@user.get_command_method)
     else
-      unknown_command
+      case @message
+      when /^\/start/
+        BotCommand::Start.new(user).start
+      when /^\/help/
+        BotCommand::Help.new(user).help
+      when /^\/update/
+        BotCommand::Update.new(user).update
+      when /^\/username/
+        BotCommand::Username.new(user,message).username
+      when /^\/platform/
+        BotCommand::Platform.new(user,message).platform
+      when /^\/user/
+        BotCommand::User.new(user).user
+      when /^\/stats/
+        BotCommand::Stats.new(user).stats
+      when /^\/rank/
+        BotCommand::Rank.new(user).rank
+      else
+        unknown_command
+      end
     end
   end
 

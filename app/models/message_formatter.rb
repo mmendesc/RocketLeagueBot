@@ -16,8 +16,8 @@ class MessageFormatter
     Example: /platform steam
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
-      /username xxx - Set your user username or id
-      /platform xxx - Set your platform
+      /username  - Set your user username or id
+      /platform  - Set your platform
       /update       - Set on/off daily stastics <b>default: on</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered
@@ -38,13 +38,12 @@ class MessageFormatter
     "
     <b>Instructions:</b>
     First set your user with /username
-    Example: /username yournamegoeshere
-    Second set the platform you play , options [steam,ps,xbox]
-    Example: /platform steam
+    Second set the platform you play with /platform , options [steam,ps,xbox]
+
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
-      /username xxx - Set your user username or id
-      /platform xxx - Set your platform
+      /username  - Set your user username or id
+      /platform  - Set your platform
       /update       - Set on/off daily stastics <b>default: on</b>
       /help         - Send bot command help
       /user         - Send name/platform you entered

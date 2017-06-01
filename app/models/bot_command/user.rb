@@ -12,6 +12,7 @@ module BotCommand
         msg = "You need to set your Username and Platform, send /help for instructions"
       end
       send_message(msg)
+      @user.reset_next_bot_command
     end
 
   end

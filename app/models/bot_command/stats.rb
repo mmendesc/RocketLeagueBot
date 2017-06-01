@@ -8,6 +8,7 @@ module BotCommand
       msg = ScraperApi::Scraper.new(@user).stats
       msg = MessageFormatter.new(msg).stats
       send_message msg
+      @user.reset_next_bot_command
     end
 
   end

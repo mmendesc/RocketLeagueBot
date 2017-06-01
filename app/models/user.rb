@@ -3,8 +3,9 @@ class User < ApplicationRecord
   has_many :ranks
   validates_uniqueness_of :telegram_id
 
-  def set_next_bot_command(command)
+  def set_next_bot_command(command,method)
     self.bot_command['command'] = command
+    self.bot_command['method'] = method
     save
   end
 
@@ -12,9 +13,15 @@ class User < ApplicationRecord
     bot_command['command']
   end
 
+  def get_command_method
+    bot_command['method']
+  end
+
   def reset_next_bot_command
-    self.bot_command = {}
-    save
+    unless self.bot_command.blank?
+      self.bot_command = {}
+      save
+    end
   end
 
   def valid_for_search?

@@ -10,17 +10,14 @@ On telegram search for the user **@rocket_telegram_bot** or click [this link](ht
 Click on the `/start` button.
 
 #### Setting up your player name and plaftorm
-To set your name send `/username xxx`
-*obs: some players in steam have duplicated names/hard to search, so you can also send your steam id*
+To set your name send `/username`
+*obs: some players in steam have duplicated names/hard to search, so you can also send your steam id or you custom url*
 
-    /username myname
+    /username
 
-or
+To set your plataform send `/platform `, there are 3 platforms available: steam,xbox and ps
 
-    /username yoursteamid
-To set your plataform send `/platform xxx`, there are 3 platforms available: steam,xbox and ps
-
-    /platform steam
+    /platform
 
 #### Daily Updates
 After starting the chat your account turn on daily updates for statistics and ranked statistics.
