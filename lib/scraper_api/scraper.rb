@@ -46,9 +46,11 @@ module ScraperApi
       get_stat 'assists'
     end
 
-    def stats
+    def stats(parser = nil)
       if @user.valid_for_search?
-        parser = get_page
+        if parser.nil?
+          parser = get_page
+        end
         if parser != 'Invalid name'
           if @user.found? || parser.found_user?
             @user.found = true
@@ -93,8 +95,10 @@ module ScraperApi
         stats=stat_parser.send(stat)
     end
 
-    def divisions
-      parser = get_page
+    def divisions(parser = nil)
+      if parser.nil?
+        parser = get_page
+      end
       if parser != 'Invalid name'
         if @user.found? || parser.found_user?
 

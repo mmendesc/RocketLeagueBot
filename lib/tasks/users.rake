@@ -17,8 +17,9 @@ namespace :users do
 
         before = user.last_stat
         before_r = user.last_rank
-        stats = ScraperApi::Scraper.new(user).stats
-        ranks = ScraperApi::Scraper.new(user).divisions
+        parser = ScraperApi::Scraper.new(user).get_page
+        stats = ScraperApi::Scraper.new(user).stats(parser)
+        ranks = ScraperApi::Scraper.new(user).divisions(parser)
         if !stats.blank?
           stats = stats.to_stats
 
