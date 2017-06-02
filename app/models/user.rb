@@ -43,7 +43,8 @@ class User < ApplicationRecord
   end
 
   def last_stat
-    self.stat(self.last_version)
+    stat = self.stat(self.last_version)
+    stat.nil? ? Stat.new : stat
   end
 
   def add_stats(stats)

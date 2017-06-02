@@ -54,4 +54,22 @@ namespace :users do
       end
     end
   end
+
+
+  desc 'check if user is findable'
+  task :find_user => :environment do
+    @users = User.all
+    @users.each do |user|
+      unless !user.valid_for_search? || (user.found? && (user.last_stat.player_id == user.player_id && user.last_stat.platform == user.platform))
+        parser = ScraperApi::Scraper.new(user).get_page
+        if parser.found_user?
+          user.found = true
+          user.save
+        else
+          user.found = false
+          user.save
+        end
+      end
+    end
+  end
 end

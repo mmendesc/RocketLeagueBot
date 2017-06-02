@@ -101,8 +101,12 @@ module ScraperApi
       end
       if parser != 'Invalid name'
         if @user.found? || parser.found_user?
-
+          @user.found = true
+          @user.save
           divisions = parser.get_division
+        else
+          @user.found = false
+          @user.save
         end
       end
     end
