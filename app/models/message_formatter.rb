@@ -164,9 +164,11 @@ Playlist: #{info['Playlist']}
 Playlist: <b>#{info['playlist']}</b>
   You had a #{resume[0]} result
   Rating: <b>#{resume[1]}#{info['rating']} </b>
+  Current Rating: <b>#{info['current_rating']}</b>
   From: #{info['from']}
   To: #{info['to']}
   Games: #{info['games']}
+
 
             "
 

@@ -31,7 +31,7 @@ class Rank < ApplicationRecord
         rank['games'] = a_rank['games'] - b_rank['games']
         rank['from'] = b_rank['rank'] + ' ' + b_rank['division']
         rank['to'] = a_rank['rank'] + ' ' + a_rank['division']
-
+        rank['current_rating'] = a_rank['rating']
         ranks << rank
       end
     end
