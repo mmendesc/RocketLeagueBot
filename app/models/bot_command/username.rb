@@ -14,7 +14,7 @@ module BotCommand
     # end
 
     def username
-      msg = 'Now type your username'
+      msg = 'Type your username.'
       @user.set_next_bot_command('BotCommand::Username','set_username')
       @user.save
       send_message msg
@@ -25,7 +25,7 @@ module BotCommand
       @user.player_id = @message
       @user.bot_command = {}
       @user.save
-      msg = 'Username registered successfuly'
+      msg = 'Username registered successfuly.'
       send_message msg
     end
 

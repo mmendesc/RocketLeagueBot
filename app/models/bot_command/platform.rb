@@ -14,7 +14,7 @@ module BotCommand
     # end
 
     def platform
-      msg = 'Type the platform you play'
+      msg = 'Type the platform you play.'
       @user.set_next_bot_command('BotCommand::Platform','set_platform')
       @user.save
       send_message msg
