@@ -28,7 +28,7 @@ module BotCommand
         @api.call('sendMessage', chat_id: @user.chat_id, text: text)
         Rails.logger.debug  "sending '#{text}' to #{@user.first_name}"
       rescue Telegram::Bot::Exceptions::ResponseError => e
-        retry
+        false
       end
     end
 
@@ -37,7 +37,7 @@ module BotCommand
         @api.call('sendMessage', chat_id: @user.chat_id, text: text, parse_mode: 'HTML', disable_web_page_preview: true)
         Rails.logger.debug "sending '#{text}' to #{@user.first_name}"
       rescue Telegram::Bot::Exceptions::ResponseError => e
-        retry
+        false
       end
     end
 
