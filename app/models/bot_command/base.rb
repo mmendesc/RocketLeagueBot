@@ -24,13 +24,21 @@ module BotCommand
     protected
 
     def send_message(text, options={})
-      @api.call('sendMessage', chat_id: @user.chat_id, text: text)
-      Rails.logger.debug  "sending '#{text}' to #{@user.first_name}"
+      begin
+        @api.call('sendMessage', chat_id: @user.chat_id, text: text)
+        Rails.logger.debug  "sending '#{text}' to #{@user.first_name}"
+      rescue Telegram::Bot::Exceptions::ResponseError => e
+        retry
+      end
     end
 
     def send_html_message(text,options={})
-      @api.call('sendMessage', chat_id: @user.chat_id, text: text, parse_mode: 'HTML', disable_web_page_preview: true)
-      Rails.logger.debug "sending '#{text}' to #{@user.first_name}"
+      begin
+        @api.call('sendMessage', chat_id: @user.chat_id, text: text, parse_mode: 'HTML', disable_web_page_preview: true)
+        Rails.logger.debug "sending '#{text}' to #{@user.first_name}"
+      rescue Telegram::Bot::Exceptions::ResponseError => e
+        retry
+      end
     end
 
     def text
