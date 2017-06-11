@@ -71,13 +71,16 @@ module ScraperApi
     end
 
     def found_user?
-      if @body.search('.alert.alert-danger.alert-dismissable').empty?
-        stats = true
-      else
+      if @body == 'Invalid name.'
         stats = false
+      else
+        if @body.search('.alert.alert-danger.alert-dismissable').empty?
+          stats = true
+        else
+          stats = false
+        end
       end
-        stats
-
+      stats
     end
 
   end

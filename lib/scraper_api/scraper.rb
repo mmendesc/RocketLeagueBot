@@ -85,7 +85,7 @@ module ScraperApi
         parsed_response= Nokogiri::HTML(response.body)
         ScraperApi::Parser.new(parsed_response)
       rescue URI::InvalidURIError
-        'Invalid name'
+        ScraperApi::Parser.new('Invalid name.')
       end
 
     end
