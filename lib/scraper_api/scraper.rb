@@ -51,7 +51,7 @@ module ScraperApi
         if parser.nil?
           parser = get_page
         end
-        if parser != 'Invalid name'
+        if parser.instance_variable_get(:@body) != 'Invalid name.'
           if @user.found? || parser.found_user?
             @user.found = true
             @user.save
@@ -99,7 +99,7 @@ module ScraperApi
       if parser.nil?
         parser = get_page
       end
-      if parser != 'Invalid name'
+      if parser.instance_variable_get(:@body) != 'Invalid name.'
         if @user.found? || parser.found_user?
           @user.found = true
           @user.save
