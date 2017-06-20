@@ -60,8 +60,10 @@ class MessageFormatter
   end
 
   def stats
-      if @info == 'not found'
+      if @info == 'N'
         msg = 'User not found.'
+      elsif @info == 'S'
+        msg = 'User not found, change your username to your steam custom url or your steam id'
       else
         msg =
             "
@@ -102,11 +104,13 @@ MVPs: #{@info['mvps']}
   def ranks
     if @info == 'N'
         msg = 'User not found.'
-      else
-        msg = String.new
-        @info.each do |info|
-          unless info['Playlist'] == 'Un-Ranked'
-            msg1 =
+    elsif @info == 'S'
+        msg = 'User not found, change your username to your steam custom url or your steam id'
+    else
+      msg = String.new
+      @info.each do |info|
+        unless info['Playlist'] == 'Un-Ranked'
+          msg1 =
               "
 Playlist: #{info['Playlist']}
 

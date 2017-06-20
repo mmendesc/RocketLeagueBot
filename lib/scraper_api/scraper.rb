@@ -60,7 +60,7 @@ module ScraperApi
         end
 
       else
-        @stats = 'not found'
+        @stats = @user.platform == 'steam' ? 'S' : 'N'
       end
       @stats
     end
@@ -96,7 +96,7 @@ module ScraperApi
         end
         divisions = parser.get_division
       else
-        divisions = 'N'
+        divisions = @user.platform == 'steam' ? 'S' : 'N'
       end
     end
 
