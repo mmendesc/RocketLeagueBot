@@ -47,28 +47,22 @@ module ScraperApi
     end
 
     def stats(parser = nil)
-      if @user.valid_for_search?
+      if @user.found
         if parser.nil?
           parser = get_page
         end
-        if parser.instance_variable_get(:@body) != 'Invalid name.'
-          if @user.found? || parser.found_user?
-            @user.found = true
-            @user.save
-            stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
-            stats.each do |stat|
-              @stats[stat] = get_stat(stat,parser)
-            end
-          else
-            @user.found = false
-            @user.save
-          end
-        else
-          @user.found = false
-          @user.save
+
+        @user.found = true
+        @user.save
+        stats = ['goals','wins','goal_ratio','saves','shots','mvps','assists']
+        stats.each do |stat|
+          @stats[stat] = get_stat(stat,parser)
         end
-        @stats
+
+      else
+        @stats = 'not found'
       end
+      @stats
     end
 
 
@@ -96,18 +90,13 @@ module ScraperApi
     end
 
     def divisions(parser = nil)
-      if parser.nil?
-        parser = get_page
-      end
-      if parser.instance_variable_get(:@body) != 'Invalid name.'
-        if @user.found? || parser.found_user?
-          @user.found = true
-          @user.save
-          divisions = parser.get_division
-        else
-          @user.found = false
-          @user.save
+      if @user.found
+        if parser.nil?
+          parser = get_page
         end
+        divisions = parser.get_division
+      else
+        divisions = 'N'
       end
     end
 

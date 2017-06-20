@@ -60,7 +60,7 @@ class MessageFormatter
   end
 
   def stats
-      if @info.blank?
+      if @info == 'not found'
         msg = 'User not found.'
       else
         msg =
@@ -100,7 +100,7 @@ MVPs: #{@info['mvps']}
   end
 
   def ranks
-    if @info.blank?
+    if @info == 'N'
         msg = 'User not found.'
       else
         msg = String.new

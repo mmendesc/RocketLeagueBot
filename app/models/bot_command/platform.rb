@@ -29,6 +29,16 @@ module BotCommand
       else
         msg = "Platform name invalid , options are: steam,ps,xbox."
       end
+      if @user.valid_for_search?
+        parser = ScraperApi::Scraper.new(@user).get_page
+        if parser.found_user?
+          user.found = true
+          user.save
+        else
+          user.found = false
+          user.save
+        end
+      end
       send_message(msg)
     end
 
