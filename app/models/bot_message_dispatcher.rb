@@ -13,7 +13,7 @@ class BotMessageDispatcher
 
   def respond
     if !@user.bot_command.blank? && @message.try(:first) != '/'
-      if @message.nil?
+      if @message.nil? || !@message.match(/[\u{1F600}-\u{1F6FF}]/).nil?
         msg = 'Try again.'
         BotCommand::Report.new(@user,msg).report
       else
