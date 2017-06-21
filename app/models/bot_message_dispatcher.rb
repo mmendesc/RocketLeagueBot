@@ -2,7 +2,6 @@ class BotMessageDispatcher
   attr_reader :message, :user
 
   def initialize(message, user)
-    binding.pry
     @message = message[:message][:text]
     @user = user
 
