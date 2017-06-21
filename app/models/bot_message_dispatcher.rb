@@ -2,6 +2,7 @@ class BotMessageDispatcher
   attr_reader :message, :user
 
   def initialize(message, user)
+    binding.pry
     @message = message[:message][:text]
     @user = user
 
@@ -12,7 +13,7 @@ class BotMessageDispatcher
   end
 
   def respond
-    if !@user.bot_command.blank? && @message.first != '/'
+    if !@user.bot_command.blank? && @message.try(:first) != '/'
       @user.get_next_bot_command.safe_constantize.new(user,message).send(@user.get_command_method)
     else
       case @message
