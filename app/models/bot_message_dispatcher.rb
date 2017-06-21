@@ -13,7 +13,12 @@ class BotMessageDispatcher
 
   def respond
     if !@user.bot_command.blank? && @message.try(:first) != '/'
-      @user.get_next_bot_command.safe_constantize.new(user,message).send(@user.get_command_method)
+      if @message.nil?
+        msg = 'Try again.'
+        BotCommand::Report.new(@user,msg).report
+      else
+        @user.get_next_bot_command.safe_constantize.new(user,message).send(@user.get_command_method)
+      end
     else
       case @message
       when /^\/start/

@@ -26,6 +26,7 @@ module BotCommand
       @user.bot_command = {}
       @user.save
       msg = 'Username registered successfuly.'
+      send_message msg
       if @user.valid_for_search?
         parser = ScraperApi::Scraper.new(@user).get_page
         if parser.found_user?
@@ -35,8 +36,9 @@ module BotCommand
           user.found = false
           user.save
         end
+
       end
-      send_message msg
+
     end
 
   end

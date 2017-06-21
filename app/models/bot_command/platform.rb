@@ -26,8 +26,10 @@ module BotCommand
         @user.bot_command = {}
         @user.save
         msg = 'Platform registered.'
+        send_message(msg)
       else
         msg = "Platform name invalid , options are: steam,ps,xbox."
+        send_message(msg)
       end
       if @user.valid_for_search?
         parser = ScraperApi::Scraper.new(@user).get_page
@@ -39,7 +41,7 @@ module BotCommand
           user.save
         end
       end
-      send_message(msg)
+
     end
 
   end
