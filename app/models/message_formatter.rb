@@ -11,9 +11,9 @@ class MessageFormatter
     <pre>---------------------------------------------------</pre>
     <b>Instructions:</b>
     First set your user with /username
-    Example: /username yournamegoeshere
+    Example: /username
     Second set the platform you play , options [steam,ps,xbox]
-    Example: /platform steam
+    Example: /platform
     <pre>---------------------------------------------------</pre>
     <b>Settings</b>
       /username  - Set your user username or id
