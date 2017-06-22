@@ -27,6 +27,7 @@ desc 'update status of all users'
 
           after = user.last_stat
           after_r = user.last_rank
+
           if user.stats.size >= 2 && !before.nil?
             report = Stat.compare_stats(before,after)
             msg = MessageFormatter.new(report).report_stat
@@ -35,6 +36,9 @@ desc 'update status of all users'
             report = Rank.compare_rank(before_r,after_r)
             msg = MessageFormatter.new(report).report_rank
             BotCommand::Report.new(user,msg).report_html
+          elsif user.stats.size == 1
+            msg = 'Daily Report: We need more data, tomorrow you will receive your actual first report.'
+            BotCommand::Report.new(user,msg).report
           end
         end
       end
