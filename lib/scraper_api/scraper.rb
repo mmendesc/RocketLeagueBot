@@ -68,7 +68,11 @@ module ScraperApi
 
 
     def full_uri
-      "#{@base_uri}#{@user.platform}/#{@user.player_id}"
+      if @user.player_id.include?('http://steamcommunity.com/id/')
+        "#{@base_uri}#{@user.platform}/#{@user.player_id.split('http://steamcommunity.com/id/')[1]}"
+      else
+        "#{@base_uri}#{@user.platform}/#{@user.player_id}"
+      end
     end
 
     def get_page
