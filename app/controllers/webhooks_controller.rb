@@ -2,9 +2,10 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def callback
-
-    dispatcher.new(webhook, user).process
-    head :ok
+    unless webhook[:message][:from].nil?
+      dispatcher.new(webhook, user).process
+      head :ok
+    end
   end
 
   def webhook
