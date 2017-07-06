@@ -118,7 +118,7 @@ Playlist: #{info['Playlist']}
   Rating: #{info['Rating']}
   Division Up: #{info['DivUp']}
   Division Down: #{info['DivDown']}
-  Games: #{info['Games']}
+
 
             "
             msg << msg1

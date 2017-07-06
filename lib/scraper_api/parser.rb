@@ -58,8 +58,9 @@ module ScraperApi
         divs = Hash.new
         tds[index].each_with_index do |td,i|
           if i ==0
-            divs[information[5]] = td.at('small').text.strip.split(/[\r\n]+/).first.strip
-            divs[information[6]] = td.at('small').text.strip.split(/[\r\n]+/).second.strip
+            str = td.at('small').text.split(/[\r\n]+/).second.strip
+            divs[information[6]] = str.slice(0,split_index(str))
+            divs[information[5]] = str.slice(split_index(str),str.size)
           end
           divs[information[i]] = td.text.strip.split(/[\r\n]+/).first
         end
@@ -68,6 +69,11 @@ module ScraperApi
         end
       end
       divisions
+    end
+
+    def split_index(str)
+      str.index('Bronze') || str.index('Silver') || str.index('Gold') || str.index('Platinum') || str.index('Diamond') || str.index('Champion') || str.index('Grand Champion') || str.index('Unranked')
+
     end
 
     def found_user?
