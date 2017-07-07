@@ -55,6 +55,7 @@ module ScraperApi
 
       trs.each do |tr|
         tds=tr.css('td')
+
         divs = Hash.new
         tds[index].each_with_index do |td,i|
           if i ==0
@@ -62,6 +63,7 @@ module ScraperApi
             divs[information[6]] = str.slice(0,split_index(str))
             divs[information[5]] = str.slice(split_index(str),str.size)
           end
+
           divs[information[i]] = td.text.strip.split(/[\r\n]+/).first
         end
         unless divs['Rank'] == 'Unranked'

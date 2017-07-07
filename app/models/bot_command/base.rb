@@ -41,6 +41,14 @@ module BotCommand
       end
     end
 
+    def send_sticker(sticker,options={})
+      begin
+        @api.call('sendSticker', chat_id: @user.chat_id, sticker: sticker)
+      rescue Telegram::Bot::Exceptions::ResponseError => e
+        false
+      end
+    end
+
     def text
       @message[:message][:text]
     end

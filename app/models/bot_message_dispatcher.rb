@@ -20,6 +20,7 @@ class BotMessageDispatcher
         @user.get_next_bot_command.safe_constantize.new(user,message).send(@user.get_command_method)
       end
     else
+      binding.pry
       case @message
       when /^\/start/
         BotCommand::Start.new(user).start
@@ -37,6 +38,8 @@ class BotMessageDispatcher
         BotCommand::Stats.new(user).stats
       when /^\/rank/
         BotCommand::Rank.new(user).rank
+      when !@message.index("/#{Figaro.env.message_all}").nil?
+        BotCommand::Report.new(user,@message).report_all
       else
         unknown_command
       end
