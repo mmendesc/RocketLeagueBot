@@ -8,10 +8,10 @@ desc 'update status of all users'
     @users = User.all
     @users.each do |user|
       if user.found? && user.report
-       msg = 'Some changes were made in the data that we had access,we are working to fix it, soon this bot will be working again.'
+       # msg = 'Some changes were made in the data that we had access,we are working to fix it, soon this bot will be working again.'
 
-       BotCommand::Report.new(user,msg).report
-       BotCommand::Report.new(user,msg).report_sticker
+       # BotCommand::Report.new(user,msg).report
+       # BotCommand::Report.new(user,msg).report_sticker
 
         # before = user.last_stat
         # before_r = user.last_rank
