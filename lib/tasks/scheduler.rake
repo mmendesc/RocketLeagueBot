@@ -8,10 +8,10 @@ desc 'update status of all users'
     @users = User.all
     @users.each do |user|
       if user.found? && user.report
-       msg = 'We are back , everything is working now, you should you report tomorrow. Thanks for the patience.'
+       # msg = 'We are back , everything is working now, you should you report tomorrow. Thanks for the patience.'
 
-       BotCommand::Report.new(user,msg).report
-       BotCommand::Report.new(user,msg).report_sticker
+       # BotCommand::Report.new(user,msg).report
+       # BotCommand::Report.new(user,msg).report_sticker
 
         before = user.last_stat
         before_r = user.last_rank
@@ -27,18 +27,18 @@ desc 'update status of all users'
           after = user.last_stat
           after_r = user.last_rank
 
-          # if user.stats.size >= 2 && !before.nil?
-          #   report = Stat.compare_stats(before,after)
-          #   msg = MessageFormatter.new(report).report_stat
-          #   BotCommand::Report.new(user,msg).report
+          if user.stats.size >= 2 && !before.nil?
+            report = Stat.compare_stats(before,after)
+            msg = MessageFormatter.new(report).report_stat
+            BotCommand::Report.new(user,msg).report
 
-          #   report = Rank.compare_rank(before_r,after_r)
-          #   msg = MessageFormatter.new(report).report_rank
-          #   BotCommand::Report.new(user,msg).report_html
-          # elsif user.stats.size == 1
-          #   msg = 'Daily Report: We need more data, tomorrow you will receive your actual first report.'
-          #   BotCommand::Report.new(user,msg).report
-          # end
+            report = Rank.compare_rank(before_r,after_r)
+            msg = MessageFormatter.new(report).report_rank
+            BotCommand::Report.new(user,msg).report_html
+          elsif user.stats.size == 1
+            msg = 'Daily Report: We need more data, tomorrow you will receive your actual first report.'
+            BotCommand::Report.new(user,msg).report
+          end
         end
       end
     end
