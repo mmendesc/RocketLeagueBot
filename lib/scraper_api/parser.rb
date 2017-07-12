@@ -47,15 +47,14 @@ module ScraperApi
 
     def get_division
       information = ['Playlist','DivDown','Rating','DivUp','Games','Rank','Division']
-      table=@body.search('#season-4.season-table')
+      div=@body.search('#season-5.season-table')
+      table = div.css('table').last
       tbody=table.at('tbody')
       trs = tbody.css('tr')
       index = 1..5
       divisions = Array.new
-
       trs.each do |tr|
         tds=tr.css('td')
-
         divs = Hash.new
         tds[index].each_with_index do |td,i|
           if i ==0

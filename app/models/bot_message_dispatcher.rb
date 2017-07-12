@@ -20,7 +20,6 @@ class BotMessageDispatcher
         @user.get_next_bot_command.safe_constantize.new(user,message).send(@user.get_command_method)
       end
     else
-      binding.pry
       case @message
       when /^\/start/
         BotCommand::Start.new(user).start

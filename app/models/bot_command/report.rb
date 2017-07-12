@@ -20,7 +20,7 @@ module BotCommand
     end
 
     def report_sticker
-      send_sticker('CAADBAADQQADCc_9B9zYpgW_1twKAg')
+      send_sticker('CAADBAADOQADCc_9B9UIuGUWwg3DAg')
     end
 
   end

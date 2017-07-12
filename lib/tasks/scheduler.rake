@@ -8,38 +8,38 @@ desc 'update status of all users'
     @users = User.all
     @users.each do |user|
       if user.found? && user.report
-       # msg = 'Some changes were made in the data that we had access,we are working to fix it, soon this bot will be working again.'
+       msg = 'We are back , everything is working now, you should you report tomorrow. Thanks for the patience.'
 
-       # BotCommand::Report.new(user,msg).report
-       # BotCommand::Report.new(user,msg).report_sticker
+       BotCommand::Report.new(user,msg).report
+       BotCommand::Report.new(user,msg).report_sticker
 
-        # before = user.last_stat
-        # before_r = user.last_rank
-        # parser = ScraperApi::Scraper.new(user).get_page
-        # stats = ScraperApi::Scraper.new(user).stats(parser)
-        # ranks = ScraperApi::Scraper.new(user).divisions(parser)
-        # if !stats.blank?
-        #   stats = stats.to_stats
+        before = user.last_stat
+        before_r = user.last_rank
+        parser = ScraperApi::Scraper.new(user).get_page
+        stats = ScraperApi::Scraper.new(user).stats(parser)
+        ranks = ScraperApi::Scraper.new(user).divisions(parser)
+        if !stats.blank?
+          stats = stats.to_stats
 
-        #   user.add_stats(stats)
-        #   user.add_rank(ranks)
+          user.add_stats(stats)
+          user.add_rank(ranks)
 
-        #   after = user.last_stat
-        #   after_r = user.last_rank
+          after = user.last_stat
+          after_r = user.last_rank
 
-        #   if user.stats.size >= 2 && !before.nil?
-        #     report = Stat.compare_stats(before,after)
-        #     msg = MessageFormatter.new(report).report_stat
-        #     BotCommand::Report.new(user,msg).report
+          # if user.stats.size >= 2 && !before.nil?
+          #   report = Stat.compare_stats(before,after)
+          #   msg = MessageFormatter.new(report).report_stat
+          #   BotCommand::Report.new(user,msg).report
 
-        #     report = Rank.compare_rank(before_r,after_r)
-        #     msg = MessageFormatter.new(report).report_rank
-        #     BotCommand::Report.new(user,msg).report_html
-        #   elsif user.stats.size == 1
-        #     msg = 'Daily Report: We need more data, tomorrow you will receive your actual first report.'
-        #     BotCommand::Report.new(user,msg).report
-        #   end
-        # end
+          #   report = Rank.compare_rank(before_r,after_r)
+          #   msg = MessageFormatter.new(report).report_rank
+          #   BotCommand::Report.new(user,msg).report_html
+          # elsif user.stats.size == 1
+          #   msg = 'Daily Report: We need more data, tomorrow you will receive your actual first report.'
+          #   BotCommand::Report.new(user,msg).report
+          # end
+        end
       end
     end
   end
