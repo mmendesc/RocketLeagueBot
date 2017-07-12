@@ -59,8 +59,9 @@ module ScraperApi
         tds[index].each_with_index do |td,i|
           if i ==0
             str = td.at('small').text.split(/[\r\n]+/).second.strip
-            divs[information[6]] = str.slice(0,split_index(str))
-            divs[information[5]] = str.slice(split_index(str),str.size)
+            str1 = td.at('small').text.split(/[\r\n]+/).third.strip
+            divs[information[6]] = str
+            divs[information[5]] = str1
           end
 
           divs[information[i]] = td.text.strip.split(/[\r\n]+/).first
