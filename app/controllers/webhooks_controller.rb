@@ -2,7 +2,7 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def callback
-    unless webhook[:channel_post].present? || webhook[:edited_message]
+    unless webhook[:channel_post].present? || webhook[:edited_message] || webhook[:edited_channel_post].present?
       dispatcher.new(webhook, user).process
       head :ok
     end
