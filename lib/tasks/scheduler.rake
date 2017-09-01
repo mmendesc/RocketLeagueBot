@@ -3,7 +3,7 @@ require './lib/scraper_api/parser'
 require './app/models/message_formatter'
 
 
-desc 'update status of all users'
+  desc 'update status of all users'
   task :update_stats => :environment do
     @users = User.all
     @users.each do |user|
@@ -44,7 +44,7 @@ desc 'update status of all users'
     end
   end
 
-desc 'check if user is findable'
+  desc 'check if user is findable'
   task :find_user => :environment do
     @users = User.all
     @users.each do |user|
@@ -56,6 +56,26 @@ desc 'check if user is findable'
         else
           user.found = false
           user.save
+        end
+      end
+    end
+  end
+
+
+  desc 'delete older versions of users stats/ranks'
+  task :clear_data => :environment do
+    User.all.each do |user|
+      version = user.last_version
+
+      user.ranks.each do |rank|
+        if rank.version != version
+          rank.destroy
+        end
+      end
+
+      user.stats.each do |stat|
+        if stat.version != version
+          stat.destroy
         end
       end
     end
