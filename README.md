@@ -3,7 +3,6 @@
 
  Data are extracted from [Rocket League Tracker Network](https://rocketleague.tracker.network) using a webscraper.
 
- Bot created using [ruby-telegram-bot-starter-kit](https://github.com/MaximAbramchuck/ruby-telegram-bot-starter-kit)
 
 ## Instructions
 On telegram search for the user **@rocket_telegram_bot** or click [this link](http://t.me/rocket_telegram_bot) and start a chat.
