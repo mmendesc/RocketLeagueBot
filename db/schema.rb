@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602004237) do
+ActiveRecord::Schema.define(version: 20171010130819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "distributions", force: :cascade do |t|
+    t.string  "name"
+    t.integer "start"
+    t.integer "end"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "ranks", force: :cascade do |t|
     t.string   "playlist"
@@ -48,18 +58,24 @@ ActiveRecord::Schema.define(version: 20170602004237) do
     t.string   "platform"
   end
 
+  create_table "tiers", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.integer  "telegram_id"
+    t.bigint   "telegram_id"
     t.string   "player_id"
     t.string   "platform"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "chat_id"
-    t.jsonb    "bot_command", default: {}
-    t.boolean  "report",      default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.jsonb    "bot_command",  default: {}
+    t.boolean  "report",       default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.boolean  "found"
+    t.integer  "platform_api"
+    t.string   "steam_id64"
     t.index ["telegram_id", "chat_id"], name: "index_users_on_telegram_id_and_chat_id", unique: true, using: :btree
   end
 
