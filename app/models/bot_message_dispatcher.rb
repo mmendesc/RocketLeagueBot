@@ -4,7 +4,7 @@ class BotMessageDispatcher
   def initialize(message, user)
     @message = message[:message][:text]
     @user = user
-
+    @secret = Figaro.env.message_all
   end
 
   def process
@@ -37,6 +37,8 @@ class BotMessageDispatcher
         BotCommand::Stats.new(user).stats
       when /^\/rank/
         BotCommand::Rank.new(user).rank
+      when /^\/#{Regexp.quote(@secret)}/
+        BotCommand::MessageAll.new(user,message).message_all
       else
         unknown_command
       end
