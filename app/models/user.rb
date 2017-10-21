@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :stats
   has_many :ranks
+  has_many :opinions
   validates_uniqueness_of :telegram_id
 
   scope :found, -> { where(found: true)}

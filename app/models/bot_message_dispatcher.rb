@@ -37,6 +37,8 @@ class BotMessageDispatcher
         BotCommand::Stats.new(user).stats
       when /^\/rank/
         BotCommand::Rank.new(user).rank
+      when /^\/feedback/
+        BotCommand::Feedback.new(user,message).feedback
       when /^\/#{Regexp.quote(@secret)}/
         BotCommand::MessageAll.new(user,message).message_all
       else
