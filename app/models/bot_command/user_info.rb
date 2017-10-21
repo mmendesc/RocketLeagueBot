@@ -1,7 +1,7 @@
 module BotCommand
-  class User < Base
+  class UserInfo < Base
 
-    def user
+    def user_info
       if @user.valid_for_search?
         msg = "Username: #{@user.player_id}, Platform: #{@user.platform}"
       elsif @user.platform.blank? && @user.player_id

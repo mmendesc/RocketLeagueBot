@@ -32,7 +32,7 @@ class BotMessageDispatcher
       when /^\/platform/
         BotCommand::Platform.new(user,message).platform
       when /^\/user/
-        BotCommand::User.new(user).user
+        BotCommand::UserInfo.new(user).user_info
       when /^\/stats/
         BotCommand::Stats.new(user).stats
       when /^\/rank/
