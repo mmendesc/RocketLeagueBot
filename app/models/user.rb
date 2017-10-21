@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :opinions
   validates_uniqueness_of :telegram_id
 
-  scope :found, -> { where(found: true)}
+  scope :only_found, -> { where(found: true)}
 
   def set_next_bot_command(command,method)
     self.bot_command['command'] = command
