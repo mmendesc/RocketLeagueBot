@@ -26,7 +26,10 @@ class MessageFormatter
       /stats        - Send your statistics
       /rank    - Send your ranked statistics
 
+    <b>About </b>
+      /feedback to contact us
     <pre>---------------------------------------------------</pre>
+
     <i> Created by Mmendesc </i>
     "
 
@@ -52,6 +55,8 @@ class MessageFormatter
       /stats        - Send your statistics
       /rank    - Send your ranked statistics
 
+    <b>About </b>
+      /feedback to contact us
     <pre>---------------------------------------------------</pre>
     <i> Created by Mmendesc </i>
     "
