@@ -25,4 +25,8 @@ class Stat < ApplicationRecord
     stats
   end
 
+  def stats_fields
+    self.attributes.except('version','created_at','updated_at','id')
+  end
+
 end

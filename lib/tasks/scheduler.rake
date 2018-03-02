@@ -21,8 +21,10 @@ require './app/models/message_formatter'
         if !stats.blank?
           stats = stats.to_stats
 
-          user.add_stats(stats)
-          user.add_rank(ranks)
+          if user.played_today?
+            user.add_stats(stats)
+            user.add_rank(ranks)
+          end
 
           after = user.last_stat
           after_r = user.last_rank
@@ -36,7 +38,7 @@ require './app/models/message_formatter'
             msg = MessageFormatter.new(report).report_rank
             BotCommand::Report.new(user,msg).report_html
           elsif user.stats.size == 1
-            msg = 'Daily Report: We need more data, tomorrow you will receive your actual first report.'
+            msg = 'Daily Report: We need more data, play one more day and you will receive your actual first report.'
             BotCommand::Report.new(user,msg).report
           end
         end
