@@ -72,8 +72,8 @@ class User < ApplicationRecord
   end
 
   def played_today?
-    self.stat(last_version).stats_fields != self.stat(last_version - 1).stats_fields &&
-    (self.rank(last_version).collect {|x| x['version']} != self.rank(last_version - 1).collect {|x| x['version']})
+    self.stat(self.last_version).stats_fields != self.stat(self.last_version - 1).stats_fields &&
+    (self.rank(self.last_version).collect {|x| x['version']} != self.rank(self.last_version - 1).collect {|x| x['version']})
   end
 
 end
