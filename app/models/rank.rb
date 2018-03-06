@@ -18,6 +18,15 @@ class Rank < ApplicationRecord
     end
   end
 
+  def self.build_from_hash(user,ranks)
+    build_ranks = []
+    ranks.each do |rank|
+      build_ranks << Rank.new(playlist: rank['Playlist'], rank: rank['Rank'],division: rank['Division'],rating: rank['Rating'].delete(','), division_up: rank['DivUp'],division_down: rank['DivDown'],games: rank['Games'],
+        version: user.next_version, player_id: user.player_id)
+    end
+    build_ranks
+  end
+
 
   def self.compare_rank(before,after)
     ranks = Array.new
