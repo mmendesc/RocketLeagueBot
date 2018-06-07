@@ -47,7 +47,7 @@ module ScraperApi
 
     def get_division
       information = ['Playlist','DivDown','Rating','DivUp','Games','Rank','Division']
-      div=@body.search('#season-7.season-table')
+      div=@body.search('#season-8.season-table')
       table = div.css('table').last
       tbody=table.at('tbody')
       trs = tbody.css('tr')
