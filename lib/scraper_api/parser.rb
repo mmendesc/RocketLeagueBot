@@ -35,42 +35,45 @@ module ScraperApi
     end
 
     def get_stat(stat)
-        data = @body.search('.stat')
+      data = @body.search('.stat')
+      if data.present?
         data.each do |x|
           if x.at('.value')['data-stat'] == stat
             stats = x.at('.value').text.strip
             return stats
           end
         end
-
+      end
     end
 
     def get_division
       information = ['Playlist','DivDown','Rating','DivUp','Games','Rank','Division']
       div=@body.search('#season-8.season-table')
-      table = div.css('table').last
-      tbody=table.at('tbody')
-      trs = tbody.css('tr')
-      index = 1..5
-      divisions = Array.new
-      trs.each do |tr|
-        tds=tr.css('td')
-        divs = Hash.new
-        tds[index].each_with_index do |td,i|
-          if i ==0
-            str = td.at('small').text.split(/[\r\n]+/).second.strip
-            str1 = td.at('small').text.split(/[\r\n]+/).third.strip
-            divs[information[5]] = str
-            divs[information[6]] = str1
-          end
+      if div.present?
+        table = div.css('table').last
+        tbody=table.at('tbody')
+        trs = tbody.css('tr')
+        index = 1..5
+        divisions = Array.new
+        trs.each do |tr|
+          tds=tr.css('td')
+          divs = Hash.new
+          tds[index].each_with_index do |td,i|
+            if i ==0
+              str = td.at('small').text.split(/[\r\n]+/).second.strip
+              str1 = td.at('small').text.split(/[\r\n]+/).third.strip
+              divs[information[5]] = str
+              divs[information[6]] = str1
+            end
 
-          divs[information[i]] = td.text.strip.split(/[\r\n]+/).first
+            divs[information[i]] = td.text.strip.split(/[\r\n]+/).first
+          end
+          unless divs['Rank'] == 'Unranked'
+            divisions << divs
+          end
         end
-        unless divs['Rank'] == 'Unranked'
-          divisions << divs
-        end
+        divisions
       end
-      divisions
     end
 
     def split_index(str)

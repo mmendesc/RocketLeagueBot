@@ -85,12 +85,11 @@ module ScraperApi
       rescue URI::InvalidURIError
         ScraperApi::Parser.new('Invalid name.')
       end
-
     end
 
     def get_stat(stat,parser)
-        stat_parser = parser
-        stats=stat_parser.send(stat)
+      stat_parser = parser
+      stats=stat_parser.send(stat)
     end
 
     def divisions(parser = nil)
@@ -103,8 +102,5 @@ module ScraperApi
         divisions = @user.platform == 'steam' ? 'S' : 'N'
       end
     end
-
-
-
   end
 end
