@@ -5,7 +5,7 @@ require './app/models/message_formatter'
 
   desc 'update status of all users'
   task :update_stats => :environment do
-    @users = User.where(found: true, report: true)
+    @users = User.where(found: true, report: true).where.not(player_id: nil).where.not(platform: nil)
     @users.each do |user|
      # msg = 'We are back , everything is working now, you should get your report tomorrow. Thanks for the patience.'
 
