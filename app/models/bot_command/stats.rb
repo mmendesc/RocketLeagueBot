@@ -8,7 +8,11 @@ module BotCommand
       checked = check_user
       unless checked[:invalid]
         msg = ScraperApi::Scraper.new(@user).stats
-        msg = MessageFormatter.new(msg).stats
+        if msg.present?
+          msg = MessageFormatter.new(msg).stats
+        else
+          msg = "We didn't found your stats, please check your user again."
+        end
         send_message msg
       else
         send_message checked[:msg]
