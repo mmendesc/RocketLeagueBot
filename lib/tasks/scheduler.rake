@@ -7,10 +7,16 @@ require './app/models/message_formatter'
   task :update_stats => :environment do
     @users = User.where(found: true, report: true).where.not(player_id: nil).where.not(platform: nil)
     @users.each do |user|
-     # msg = 'We are back , everything is working now, you should get your report tomorrow. Thanks for the patience.'
+      # msg = 'We are back , everything is working now, you should get your report tomorrow. Thanks for the patience.'
 
-     # BotCommand::Report.new(user,msg).report
-     # BotCommand::Report.new(user,msg).report_sticker
+      # BotCommand::Report.new(user,msg).report
+      # BotCommand::Report.new(user,msg).report_sticker
+
+      Raven.user_context(
+        id: user.id,
+        player_id: user.player_id
+      )
+
 
       before = user.last_stat
       before_r = user.last_rank

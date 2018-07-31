@@ -12,11 +12,13 @@ class Stat < ApplicationRecord
   end
 
   def self.create_from_hash(user,stats)
+    check_if_exists(stats)
     Stat.new(wins: stats['wins'].delete(','),goals: stats['goals'].delete(','),goal_ratio: stats['goal_ratio'],saves: stats['saves'].delete(','),
             shots: stats['shots'].delete(','),assists: stats['assists'].delete(','),mvps: stats['mvps'].delete(','), version: user.next_version,played: true,player_id: user.player_id,platform: user.platform)
   end
 
   def self.build_from_hash(user,stats)
+    check_if_exists(stats)
     Stat.new(wins: stats['wins'].delete(','),goals: stats['goals'].delete(','),goal_ratio: stats['goal_ratio'],saves: stats['saves'].delete(','),
             shots: stats['shots'].delete(','),assists: stats['assists'].delete(','),mvps: stats['mvps'].delete(','), version: user.next_version,played: true,player_id: user.player_id,platform: user.platform)
   end
@@ -34,4 +36,7 @@ class Stat < ApplicationRecord
     self.attributes.except('version','created_at','updated_at','id')
   end
 
+  def check_if_exists(object)
+    return false unless object.present?
+  end
 end

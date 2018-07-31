@@ -12,6 +12,7 @@ class Rank < ApplicationRecord
   end
 
   def self.create_from_hash(user,ranks)
+    check_if_exists(ranks)
     ranks.each do |rank|
       user.ranks << Rank.new(playlist: rank['Playlist'], rank: rank['Rank'],division: rank['Division'],rating: rank['Rating'].delete(','), division_up: rank['DivUp'],division_down: rank['DivDown'],games: rank['Games'],
         version: user.last_version, player_id: user.player_id)
@@ -19,6 +20,7 @@ class Rank < ApplicationRecord
   end
 
   def self.build_from_hash(user,ranks)
+    check_if_exists(ranks)
     build_ranks = []
     ranks.each do |rank|
       build_ranks << Rank.new(playlist: rank['Playlist'], rank: rank['Rank'],division: rank['Division'],rating: rank['Rating'].delete(','), division_up: rank['DivUp'],division_down: rank['DivDown'],games: rank['Games'],
@@ -47,4 +49,7 @@ class Rank < ApplicationRecord
     ranks
   end
 
+  def check_if_exists(object)
+    return false unless object.present?
+  end
 end
