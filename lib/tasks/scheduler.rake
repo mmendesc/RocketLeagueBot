@@ -26,7 +26,9 @@ require './app/models/message_formatter'
       if !stats.blank?
         stats = stats.to_stats
 
-        if user.played_today?(Stat.build_from_hash(user,stats),Rank.build_from_hash(user,ranks))
+        if !stats.values.include?(nil) &&
+          !ranks.map {|x| x.values}.flatten.include?(nil) &&
+          user.played_today?(Stat.build_from_hash(user,stats),Rank.build_from_hash(user,ranks))
           user.add_stats(stats)
           user.add_rank(ranks)
         end

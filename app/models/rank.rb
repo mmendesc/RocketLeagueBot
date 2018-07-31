@@ -50,6 +50,6 @@ class Rank < ApplicationRecord
   end
 
   def self.check_if_exists(object)
-    object.uniq.include?(nil)
+    object.map {|x| x.values}.flatten.include?(nil)
   end
 end
