@@ -50,6 +50,6 @@ class Rank < ApplicationRecord
   end
 
   def self.check_if_exists(object)
-    return false unless object.values.uniq.include?(nil)
+    return false unless object.uniq.include?(nil)
   end
 end
