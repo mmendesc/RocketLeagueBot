@@ -37,6 +37,6 @@ class Stat < ApplicationRecord
   end
 
   def self.check_if_exists(object)
-    return false unless object.present?
+    return false unless object.values.uniq.include?(nil)
   end
 end
