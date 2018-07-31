@@ -23,7 +23,7 @@ require './app/models/message_formatter'
       parser = ScraperApi::Scraper.new(user).get_page
       stats = ScraperApi::Scraper.new(user).stats(parser)
       ranks = ScraperApi::Scraper.new(user).divisions(parser)
-      if !stats.blank?
+      if stats['goals'] != '0'
         stats = stats.to_stats
 
         if !stats.values.include?(nil) &&
