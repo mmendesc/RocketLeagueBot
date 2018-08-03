@@ -40,7 +40,7 @@ class BotMessageDispatcher
       when /^\/feedback/
         BotCommand::Feedback.new(user,message).feedback
       when /^\/#{Regexp.quote(@secret)}/
-        BotCommand::MessageAll.new(user,message).message_all
+        #BotCommand::MessageAll.new(user,message).message_all
       else
         unknown_command
       end
