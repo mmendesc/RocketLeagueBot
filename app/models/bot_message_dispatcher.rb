@@ -39,7 +39,7 @@ class BotMessageDispatcher
         BotCommand::Rank.new(user).rank
       when /^\/feedback/
         BotCommand::Feedback.new(user,message).feedback
-      when '/a'
+      when /^\/#{Regexp.quote(@secret)}/
         #BotCommand::MessageAll.new(user,message).message_all
       else
         unknown_command
