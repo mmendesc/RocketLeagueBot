@@ -13,6 +13,7 @@ module BotCommand
       User.where(found: true).each do |user|
         BotCommand::Report.new(user,message).report
       end
+      @user.reset_next_bot_command
     end
   end
 end
