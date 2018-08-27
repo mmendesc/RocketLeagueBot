@@ -39,17 +39,17 @@ require './app/models/message_formatter'
         if user.stats.size >= 2 && !before.nil?
           report = Stat.compare_stats(before,after)
           msg = MessageFormatter.new(report).report_stat
-          #BotCommand::Report.new(user,msg).report
+          BotCommand::Report.new(user,msg).report
 
           report = Rank.compare_rank(before_r,after_r)
           msg = MessageFormatter.new(report).report_rank
-          #BotCommand::Report.new(user,msg).report_html
+          BotCommand::Report.new(user,msg).report_html
         elsif user.stats.size == 1 && user.last_version == 1
           msg = 'Daily Report: We need more data, play one more day and you will receive your actual first report.'
-          #BotCommand::Report.new(user,msg).report
+          BotCommand::Report.new(user,msg).report
         else
           msg = "You didn't play in the last 24 hours."
-          #BotCommand::Report.new(user,msg).report
+          BotCommand::Report.new(user,msg).report
         end
       end
     end
